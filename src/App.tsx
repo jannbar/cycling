@@ -98,7 +98,7 @@ function EntryText({ goal }: { goal: number }) {
     <div className="mt-5">
       <p>
         This year I want to ride my bike at least{' '}
-        <strong className="font-semibold">{goal} kilometers</strong>.
+        <strong className="font-semibold">{goal} km</strong>.
       </p>
     </div>
   )
@@ -120,7 +120,7 @@ function Progress({ goal, progress }: { goal: number; progress: number }) {
     <div className="mt-5">
       <span className="block">Current progress:</span>
       <span className="block mt-1 text-2xl font-semibold text-indigo-500">
-        {progress}/{goal}km
+        {progress}/{goal} km
       </span>
 
       <div className="bg-slate-300 h-4 mt-7 rounded-md overflow-hidden">
