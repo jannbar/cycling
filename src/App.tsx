@@ -71,6 +71,9 @@ function App() {
           <div>
             <EntryText goal={data.goal} />
             <Progress goal={data.goal} progress={data.progress} />
+            <span className="block mt-5 text-xs text-slate-500">
+              Last ride: {data.entries[data.entries.length - 1].date}
+            </span>
           </div>
         )}
       </div>
@@ -129,7 +132,7 @@ function Progress({ goal, progress }: { goal: number; progress: number }) {
           style={{ width: `${width}%` }}
         ></div>
       </div>
-      <span className="block mt-2 text-sm">{progressInPercent}%</span>
+      <span className="block mt-2 text-sm font-medium">{progressInPercent}%</span>
     </div>
   )
 }
