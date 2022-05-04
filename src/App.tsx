@@ -62,7 +62,7 @@ function App() {
   }, [])
 
   return (
-    <div className="app bg-slate-50 text-slate-800 min-h-screen">
+    <div className="app">
       <div className="max-w-2xl mx-auto px-6 py-10 text-center">
         <Header />
         {!data && loading && <Loading />}
@@ -121,12 +121,12 @@ function Progress({ goal, progress }: { goal: number; progress: number }) {
 
   return (
     <div className="mt-5">
-      <span className="block">Current progress:</span>
+      <span className="block font-medium">Current progress:</span>
       <span className="block mt-1 text-2xl font-semibold text-indigo-500">
         {progress}/{goal} km
       </span>
 
-      <div className="bg-slate-300 h-4 mt-7 rounded-md overflow-hidden">
+      <div className="bg-slate-300 h-4 mt-6 rounded-md overflow-hidden">
         <div
           className="bg-slate-700 h-full transition-all duration-500"
           style={{ width: `${width}%` }}
