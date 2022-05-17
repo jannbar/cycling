@@ -123,7 +123,7 @@ function Progress({ goal, progress }: { goal: number; progress: number }) {
     <div className="mt-5">
       <span className="block font-medium">Current progress:</span>
       <span className="block mt-1 text-2xl font-semibold text-indigo-500">
-        {progress}/{goal} km
+        {progress.toFixed(2)}/{goal} km
       </span>
 
       <div className="bg-slate-300 h-4 mt-6 rounded-md overflow-hidden">
