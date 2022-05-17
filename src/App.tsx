@@ -37,14 +37,14 @@ function App() {
           const values = Object.values(obj)
           return {
             date: values[0],
-            distance: parseFloat(values[1]),
+            distance: Number(values[1]),
           }
         })
 
         const progress = entries.map(entry => entry.distance).reduce((prev, curr) => prev + curr)
 
         const transformedData: Data = {
-          goal: parseInt(Object.values(data[0])[2] as string),
+          goal: Number(Object.values(data[0])[2] as string),
           entries,
           progress,
         }
@@ -113,7 +113,7 @@ function Progress({ goal, progress }: { goal: number; progress: number }) {
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      setWidth(parseFloat(progressInPercent))
+      setWidth(Number(progressInPercent))
     }, 500)
 
     return () => clearTimeout(timeout)
