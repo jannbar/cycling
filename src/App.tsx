@@ -74,6 +74,9 @@ function App() {
             <span className="block mt-5 text-xs text-slate-500">
               Last ride: {data.entries[data.entries.length - 1].date}
             </span>
+            <span className="block mt-1 text-xs text-slate-500">
+              Longest ride: {Math.max(...data.entries.map(entry => entry.distance))}km
+            </span>
           </div>
         )}
       </div>
