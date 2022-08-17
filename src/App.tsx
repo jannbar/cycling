@@ -33,15 +33,19 @@ function App() {
 
         const data = await res.json()
 
-        const entries: Array<Entry> = data.map((obj: Record<string, string>): Entry => {
-          const values = Object.values(obj)
-          return {
-            date: values[0],
-            distance: Number(values[1]),
+        const entries: Array<Entry> = data.map(
+          (obj: Record<string, string>): Entry => {
+            const values = Object.values(obj)
+            return {
+              date: values[0],
+              distance: Number(values[1]),
+            }
           }
-        })
+        )
 
-        const progress = entries.map(entry => entry.distance).reduce((prev, curr) => prev + curr)
+        const progress = entries
+          .map(entry => entry.distance)
+          .reduce((prev, curr) => prev + curr)
 
         const transformedData: Data = {
           goal: Number(Object.values(data[0])[2] as string),
@@ -75,7 +79,8 @@ function App() {
               Last ride: {data.entries[data.entries.length - 1].date}
             </span>
             <span className="block mt-1 text-xs text-slate-500">
-              Longest ride: {Math.max(...data.entries.map(entry => entry.distance))}km
+              Longest ride:{' '}
+              {Math.max(...data.entries.map(entry => entry.distance))}km
             </span>
           </div>
         )}
@@ -111,7 +116,7 @@ function EntryText({ goal }: { goal: number }) {
 }
 
 function Progress({ goal, progress }: { goal: number; progress: number }) {
-  const progressInPercent = (progress / (goal / 100)).toFixed(2)
+  const progressInPercent = Math.round(progress / (goal / 100))
   const [width, setWidth] = useState(0)
 
   useEffect(() => {
@@ -126,7 +131,7 @@ function Progress({ goal, progress }: { goal: number; progress: number }) {
     <div className="mt-5">
       <span className="block font-medium">Current progress:</span>
       <span className="block mt-1 text-2xl font-semibold text-indigo-500">
-        {progress.toFixed(2)}/{goal} km
+        {Math.round(progress)}/{goal} km
       </span>
 
       <div className="bg-slate-300 h-4 mt-6 rounded-md overflow-hidden">
@@ -135,7 +140,9 @@ function Progress({ goal, progress }: { goal: number; progress: number }) {
           style={{ width: `${width}%` }}
         ></div>
       </div>
-      <span className="block mt-2 text-sm font-medium">{progressInPercent}%</span>
+      <span className="block mt-4 text-sm font-medium">
+        {progressInPercent}% done
+      </span>
     </div>
   )
 }
